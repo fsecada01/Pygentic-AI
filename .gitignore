@@ -139,7 +139,7 @@ cython_debug/
 
 # custom folders
 .idea
-lab
+labs
 .aws
 .docker
 .deta
