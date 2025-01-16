@@ -1,0 +1,31 @@
+aiofiles
+aiomysql
+celery
+fastapi
+fastapi-restful
+fastcrud
+flower
+greenlet
+gunicorn; platform_system != 'Windows'
+httpx
+httpx[socks]
+httpx-html
+html5lib
+hypercorn; platform_system == 'Windows'
+loguru
+lxml
+lxml[html_clean]
+python-dateutil
+python-decouple
+python-slugify
+psycopg
+pytz
+redis
+simplejson
+sqlalchemy_mixins
+sqlmodel
+sqlmodel-crud-utilities @ git+https://github.com/fsecada01/SQLModel-CRUD-Utilities@v0.0.1a1
+typing-inspect
+uvicorn
+xmljson
+xmltodict

@@ -1,0 +1,58 @@
+services:
+  web:
+    image: s3docker.francissecada.com/pygentic_ai:main.2024-11-30
+    deploy:
+      resources:
+        limits:
+          memory: 1024mb
+    ports:
+      - "5051:5051"
+    env_file:
+      - ./stack.env
+    environment:
+      PORT: 5051
+      SERVER_ENV: prod
+    volumes:
+      - ./src/proxy_urls.db:/opt/pygentic_ai/src/proxy_urls.db
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.pygentic_ai.entrypoints=websecure
+      - traefik.http.routers.pygentic_ai.rule=Host(`rankedjobsmicroservice.francissecada.com`)
+      - traefik.http.routers.pygentic_ai.tls=true
+    healthcheck:
+      test: curl --fail http://localhost:5051/ || exit 1
+      interval: 40s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
+    networks:
+      - proxy
+  celery_service:
+    image: s3docker.francissecada.com/pygentic_ai:main.2024-11-30
+    deploy:
+      resources:
+        limits:
+          memory: 512mb
+    #    build: .
+    command: ./docker/celery/start.sh
+    env_file:
+      - ./stack.env
+    environment:
+      PORT: ${CELERY_PORT}
+      SERVER_ENV: staging
+      C_FORCE_ROOT: true
+    ports:
+      - "5052:5052"
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.celery_ranked_jobs.entrypoints=websecure
+      - traefik.http.routers.celery_ranked_jobs.rule=Host(`celery.rankedjobsmicroservice.francissecada.com`)
+    networks:
+      - proxy
+    depends_on:
+      - web
+networks:
+  proxy:
+    external: true
