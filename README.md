@@ -508,7 +508,6 @@ Build Pygentic-AI from the source and intsall dependencies:
 	<!-- [docker-link]: https://www.docker.com/ -->
 
 	**Using [docker](https://www.docker.com/):**
-
 	```sh
 	❯ docker build -t fsecada01/Pygentic-AI .
 	```
@@ -521,7 +520,7 @@ Build Pygentic-AI from the source and intsall dependencies:
 	**Using [pip](https://pypi.org/project/pip/):**
 
 	```sh
-	❯ pip install -r core_requirements.in, core_requirements.txt, dev_requirements.in, dev_requirements.txt
+	❯ pip install -r core_requirements.in dev_requirements.in
 	```
 <!-- SHIELDS BADGE CURRENTLY DISABLED -->
 	<!-- [![uv][uv-shield]][uv-link] -->
