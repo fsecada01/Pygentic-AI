@@ -12,6 +12,7 @@ httpx[socks]
 httpx-html
 html5lib
 hypercorn; platform_system == 'Windows'
+jinjax
 loguru
 lxml
 lxml[html_clean]
@@ -19,6 +20,7 @@ python-dateutil
 python-decouple
 python-slugify
 psycopg
+pydantic-ai[examples]
 pytz
 redis
 simplejson
