@@ -326,8 +326,8 @@ requires-dist = [
     { name = "jiter", specifier = "==0.8.2" },
     { name = "jsonpath-python", specifier = "==1.0.6" },
     { name = "kombu", specifier = "==5.4.2" },
-    { name = "logfire", specifier = "==3.1.1" },
-    { name = "logfire-api", specifier = "==3.1.1" },
+    { name = "logfire", specifier = "==3.2.0" },
+    { name = "logfire-api", specifier = "==3.2.0" },
     { name = "loguru", specifier = "==0.7.3" },
     { name = "lxml", specifier = "==5.3.0" },
     { name = "lxml-html-clean", specifier = "==0.4.1" },
@@ -506,7 +506,7 @@ dev = [
     { name = "pywinpty", specifier = "==2.0.14" },
     { name = "pyyaml", specifier = "==6.0.2" },
     { name = "pyzmq", specifier = "==26.2.0" },
-    { name = "referencing", specifier = "==0.36.0" },
+    { name = "referencing", specifier = "==0.36.1" },
     { name = "requests", specifier = "==2.32.3" },
     { name = "rfc3339-validator", specifier = "==0.1.4" },
     { name = "rfc3986-validator", specifier = "==0.1.1" },
@@ -1793,7 +1793,7 @@ wheels = [
 
 [[package]]
 name = "logfire"
-version = "3.1.1"
+version = "3.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "executing" },
@@ -1804,9 +1804,9 @@ dependencies = [
     { name = "rich" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/bf/2f/396e9c3c95961645c440951d5730c73a3cfbfcef0df1dde2929e21279289/logfire-3.1.1.tar.gz", hash = "sha256:9c086dd3061a8847d2a6e19df9a9c2b08f914449acaff7eb0b7b75db56340f66", size = 261918 }
+sdist = { url = "https://files.pythonhosted.org/packages/b3/95/cd3eb5069d1485378611241f028b5f7551a0594c834b7b7b940faaf108ea/logfire-3.2.0.tar.gz", hash = "sha256:3780d7bceae4ad384fec9326cda671f663ea9f0bea28d7890abf5d5f954e3694", size = 263267 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6f/5f/593a8f77c6af02ae1d2d7db4d99fbac89b837c6ba9859775becada0dc42b/logfire-3.1.1-py3-none-any.whl", hash = "sha256:c940b654c9126f782ccff3ef5fbb48ab186dde5f3cabecd89c9157ab95b7da89", size = 177371 },
+    { url = "https://files.pythonhosted.org/packages/d3/14/a05d510c63626162d1c3ea9ad25f1312b6dea2528514c772355499eb2ead/logfire-3.2.0-py3-none-any.whl", hash = "sha256:b18d88f2aab73ebfd73b03fdb8d0b494f23ebf0556ff82edc04b9d68fdca60d2", size = 177516 },
 ]
 
 [package.optional-dependencies]
@@ -1822,11 +1822,11 @@ sqlite3 = [
 
 [[package]]
 name = "logfire-api"
-version = "3.1.1"
+version = "3.2.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d4/76/de153d15dc8f790376fa7d14c7d291c17ed838e5e3e00cf5802243683b80/logfire_api-3.1.1.tar.gz", hash = "sha256:9eba3f3fb25d07d1fc1344c9cb1de4b9f9d55a2bc6b39c4d5f5227b6b1ea3532", size = 44557 }
+sdist = { url = "https://files.pythonhosted.org/packages/37/73/896493fc411737ab40daf78e59a7474f6a0c71a9d0409ceee5cd6cf256f6/logfire_api-3.2.0.tar.gz", hash = "sha256:1423888a236010a5e1902aad21801265c701fed673424231451e00b6abc2bf51", size = 44609 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9b/da/20047ea3cbb1713bcac78b45353bcc6476257df14c79928be83028c7c9e6/logfire_api-3.1.1-py3-none-any.whl", hash = "sha256:00e6e015ffc9eccf5afc2c84a71b596999c00e64fdf886f797e1c781025f3b51", size = 73819 },
+    { url = "https://files.pythonhosted.org/packages/34/00/c567169fa83c9683ca4d6f7f40f3cbe0080226bca5e5dd687619fcdd5c89/logfire_api-3.2.0-py3-none-any.whl", hash = "sha256:653f01942305d9b48c9283de95aee6315bea585447156100bc4911dd1d9faf44", size = 73880 },
 ]
 
 [[package]]
@@ -2838,15 +2838,15 @@ wheels = [
 
 [[package]]
 name = "referencing"
-version = "0.36.0"
+version = "0.36.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
     { name = "rpds-py" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/84/7c/c7fb671169578ca7f31081365ccd28e3da845815d38254d337f9a37b12ca/referencing-0.36.0.tar.gz", hash = "sha256:246db964bb6101905167895cd66499cfb2aabc5f83277d008c52afe918ef29ba", size = 74566 }
+sdist = { url = "https://files.pythonhosted.org/packages/27/32/fd98246df7a0f309b58cae68b10b6b219ef2eb66747f00dfb34422687087/referencing-0.36.1.tar.gz", hash = "sha256:ca2e6492769e3602957e9b831b94211599d2aade9477f5d44110d2530cf9aade", size = 74661 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/30/2f/a969d8bb4b86c2f1308cf020fba2f81a6c9c719b53a34b2ae83da2713629/referencing-0.36.0-py3-none-any.whl", hash = "sha256:01fc2916bab821aa3284d645bbbb41ba39609e7ff47072416a39ec2fb04d10d9", size = 26770 },
+    { url = "https://files.pythonhosted.org/packages/cc/fa/9f193ef0c9074b659009f06d7cbacc6f25b072044815bcf799b76533dbb8/referencing-0.36.1-py3-none-any.whl", hash = "sha256:363d9c65f080d0d70bc41c721dce3c7f3e77fc09f269cd5c8813da18069a6794", size = 26777 },
 ]
 
 [[package]]

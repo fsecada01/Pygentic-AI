@@ -300,7 +300,7 @@ pyzmq==26.2.0
     #   ipykernel
     #   jupyter-client
     #   jupyter-server
-referencing==0.36.0
+referencing==0.36.1
     # via
     #   jsonschema
     #   jsonschema-specifications

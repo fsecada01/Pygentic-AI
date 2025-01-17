@@ -155,3 +155,9 @@ migrations
 *.json
 celerybeat-schedule*
 *.db
+
+# Ruff cache
+.ruff_cache
+
+# JS dependencies
+node_modules

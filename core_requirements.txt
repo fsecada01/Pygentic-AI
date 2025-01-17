@@ -166,9 +166,9 @@ jsonpath-python==1.0.6
     # via mistralai
 kombu==5.4.2
     # via celery
-logfire==3.1.1
+logfire==3.2.0
     # via pydantic-ai-examples
-logfire-api==3.1.1
+logfire-api==3.2.0
     # via pydantic-ai-slim
 loguru==0.7.3
     # via

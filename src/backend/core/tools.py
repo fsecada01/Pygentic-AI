@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as soup
 from pydantic_ai import RunContext
 
 from backend.core.consts import AI_MODEL
-from backend.core.core import SwotAgentDeps, swot_agent
+from backend.core.core import SwotAgentDeps, SwotAnalysis, swot_agent
 from backend.core.utils import report_tool_usage
 from backend.logger import logger
 
@@ -93,3 +93,32 @@ async def get_reddit_insights(
         )
 
     return "\n".join(insights)
+
+
+async def run_agent(
+    url: str, deps: SwotAgentDeps = SwotAgentDeps()
+) -> SwotAnalysis | Exception:
+    """
+    Runs the SWOT Analysis Agent
+
+    :param url: str
+    :param deps: SwotAgentDeps
+    :return: SwotAnalysis | Exception
+    """
+    try:
+        deps.tool_history = []
+        result = await swot_agent.run(
+            f"Perform a comprehensive SWOT analysis for this product: {url}",
+            deps=deps,
+        )
+        logger.info(f"Agent Result: {result}")
+
+        if deps.update_status_func:
+            await deps.update_status_func(deps.request, "Analysis Complete")
+    except Exception as e:
+        logger.exception(f"Error during agent run: {type(e), e, e.args}")
+
+        if deps.update_status_func:
+            await deps.update_status_func(deps.request, f"Error: {e}")
+
+        return e
