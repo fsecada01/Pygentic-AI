@@ -5,7 +5,8 @@ from backend.core.core import SwotAgentDeps
 
 
 async def report_tool_usage(
-    ctx: RunContext[SwotAgentDeps], tool_def: ToolDefinition
+    ctx: RunContext[SwotAgentDeps],
+    tool_def: ToolDefinition,
 ) -> ToolDefinition:
     """
     Reports tool usage + results to an update function
@@ -18,7 +19,8 @@ async def report_tool_usage(
 
     if ctx.deps.update_status_func:
         await ctx.deps.update_status_func(
-            ctx.deps.request, f"Using tool: {tool_def.name}..."
+            ctx.deps.request,
+            f"Using tool: {tool_def.name}...",
         )
         ctx.deps.tool_history.append(tool_def.name)
 

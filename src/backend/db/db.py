@@ -38,7 +38,9 @@ def as_form(cls: type[BaseModel]):
             inspect.Parameter.POSITIONAL_ONLY,
             default=model_field.default,
             annotation=Annotated[
-                model_field.annotation, *model_field.metadata, Form()
+                model_field.annotation,
+                *model_field.metadata,
+                Form(),
             ],
         )
         for field_name, model_field in cls.model_fields.items()
@@ -56,7 +58,7 @@ def as_form(cls: type[BaseModel]):
     return cls
 
 
-async def get_async_session() -> AsyncGenerator[AsyncSession, None]:
+async def get_async_session() -> AsyncGenerator[AsyncSession]:
     """
     Get async SQLA session via generator function
     """
@@ -88,7 +90,7 @@ async def run_out_of_band(
     """
     async with async_sessionaker() as oob_session:
         await oob_session.connection(
-            execution_options={"isolation_level": "AUTOCOMMIT"}
+            execution_options={"isolation_level": "AUTOCOMMIT"},
         )
 
     result = await oob_session.execute(statement)
@@ -96,7 +98,10 @@ async def run_out_of_band(
     if merge_results:
         return (
             await session_inst.run_sync(
-                merge_frozen_result, statement, result.freeze(), load=False
+                merge_frozen_result,
+                statement,
+                result.freeze(),
+                load=False,
             )
         )()
     else:
@@ -114,7 +119,7 @@ async def check_db_exists(engine_inst):
         from sqlalchemy import inspect  # noqa
 
         tables = await conn.run_sync(
-            lambda sync_conn: inspect(sync_conn).get_table_names()
+            lambda sync_conn: inspect(sync_conn).get_table_names(),
         )
         logger.info(tables)
         if not tables:
@@ -146,7 +151,9 @@ async def create_db(
 
 
 def create_db_engine(
-    db_url: str, async_bool: bool = False, echo_bool: bool = False
+    db_url: str,
+    async_bool: bool = False,
+    echo_bool: bool = False,
 ):
     """
 
@@ -194,11 +201,15 @@ sync_engine = create_db_engine(db_url, echo_bool=echo)
 session_inst = Session(sync_engine, expire_on_commit=False)
 
 async_session_maker = sessionmaker(
-    bind=engine, class_=AsyncSession, expire_on_commit=False
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False,
 )
 
 session_maker = sessionmaker(
-    bind=engine, class_=Session, expire_on_commit=False
+    bind=engine,
+    class_=Session,
+    expire_on_commit=False,
 )
 
 if __name__ == "__main__":

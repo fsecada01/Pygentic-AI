@@ -26,7 +26,7 @@ list(
             enqueue=True,
         ),
         ["info", "debug", "error", "success", "warning", "critical"],
-    )
+    ),
 )
 
 
@@ -53,7 +53,8 @@ class InterceptHandler(logging.Handler):
 
         log = logger.bind(request_id="app")
         log.opt(depth=depth, exception=record.exc_info).log(
-            level, record.getMessage()
+            level,
+            record.getMessage(),
         )
 
 

@@ -7,7 +7,8 @@ from backend.settings.prod import Settings as ProdSettings
 from backend.utils import get_val
 
 server_types = enum.StrEnum(
-    "ServerTypes", {x.upper(): x for x in ("dev", "uat", "staging", "prod")}
+    "ServerTypes",
+    {x.upper(): x for x in ("dev", "uat", "staging", "prod")},
 )
 
 

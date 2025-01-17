@@ -47,7 +47,7 @@ all_dialects = enum.Enum(
                 y
                 for x in (pg_dialects, mysql_dialects, sqlite_dialects)
                 for y in x
-            ]
+            ],
         ]
     },
 )

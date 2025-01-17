@@ -1,0 +1,9 @@
+{# def
+  url: str,
+  rel: str = 'stylesheet'
+#}
+
+<link rel={{ rel }}
+      href={{ url }}
+        {{ slot }}
+  />

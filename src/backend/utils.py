@@ -62,7 +62,7 @@ def get_val(val: str, default: str | int | bool | None = None, **kwargs):
     else:
         raise ValueError(
             f"Env Var {val} is not populated in the environment "
-            f"or within the configuration files"
+            f"or within the configuration files",
         )
 
     return val

@@ -56,7 +56,7 @@ def get_db_val(
         [
             hasattr(db_configs, x)
             for x in ("name", "user", "password", "host", "port", "kwargs")
-        ]
+        ],
     ):
         url = f"{dialect}:{schema_sep}{db_configs.host}"
     else:

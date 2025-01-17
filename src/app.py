@@ -20,7 +20,8 @@ app = create_app(debug=debug_arg, settings_obj=app_settings)
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(
-    request: Request, exc: RequestValidationError
+    request: Request,
+    exc: RequestValidationError,
 ):
     """
     Custom validation error messaging for end-users. This reduces ambiguity
@@ -35,7 +36,8 @@ async def validation_exception_handler(
     content = {"status_code": 10422, "message": exc_str, "data": None}
 
     return JSONResponse(
-        content=content, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY
+        content=content,
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
     )
 
 
@@ -63,7 +65,7 @@ async def unicorn_exception_handler(request: Request, exc: UnicornException):
         status_code=418,
         content={
             "message": f"Oops! {exc.name} did something. "
-            "There goes a rainbow..."
+            "There goes a rainbow...",
         },
     )
 

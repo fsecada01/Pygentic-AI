@@ -26,10 +26,10 @@ catalog = Catalog(jinja_env=templates.env)
 list(
     map(
         lambda folder: catalog.add_folder(
-            os.path.join(frontend, "components", folder)  # noqa
+            os.path.join(frontend, "components", folder),  # noqa
         ),
         ("main", "forms", "snippets"),
-    )
+    ),
 )
 
 user_frontend.mount(
@@ -87,7 +87,7 @@ async def get_status(request: Request):
         result = ANALYSIS_COMPLETE_MESSAGE in messages
         logger.info(
             f"Status check - Session ID: {'session_id'}, Messages: "
-            f"{messages}"
+            f"{messages}",
         )
 
         context.update({"messages": messages, "result": result})

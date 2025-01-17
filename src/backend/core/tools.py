@@ -10,7 +10,8 @@ from backend.logger import logger
 
 @swot_agent.tool(prepare=report_tool_usage)
 async def fetch_website_content(
-    _ctx: RunContext[SwotAgentDeps], url: str
+    _ctx: RunContext[SwotAgentDeps],
+    url: str,
 ) -> str:
     """
     Fetches the HTML content of the given URL via httpx and beautifulsoup
@@ -70,7 +71,9 @@ async def analyze_competition(
 
 @swot_agent.tool(prepare=report_tool_usage)
 async def get_reddit_insights(
-    ctx: RunContext[SwotAgentDeps], query: str, subreddit_name: str = "python"
+    ctx: RunContext[SwotAgentDeps],
+    query: str,
+    subreddit_name: str = "python",
 ):
     """
     A tool to gain insights from a subreddit. Data is returned as string
@@ -89,14 +92,15 @@ async def get_reddit_insights(
         insights.append(
             f"Title: {post.title}\n"
             f"URL: {post.url}\n"
-            f"Content: {post.selftext}\n"
+            f"Content: {post.selftext}\n",
         )
 
     return "\n".join(insights)
 
 
 async def run_agent(
-    url: str, deps: SwotAgentDeps = SwotAgentDeps()
+    url: str,
+    deps: SwotAgentDeps = SwotAgentDeps(),
 ) -> SwotAnalysis | Exception:
     """
     Runs the SWOT Analysis Agent

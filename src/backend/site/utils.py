@@ -46,11 +46,14 @@ async def update_status(session_id: str, message: Any) -> None:
         else:
             loop = asyncio.get_running_loop()
             await loop.run_in_executor(
-                None, emulate_tool_completion, session_id, message
+                None,
+                emulate_tool_completion,
+                session_id,
+                message,
             )
 
     logger.info(
-        f"Status messages for session {session_id}: {status_store[session_id]}"
+        f"Status messages for session {session_id}: {status_store[session_id]}",
     )
 
 
@@ -67,7 +70,8 @@ async def run_agent_with_progress(session_id, url):
         deps = SwotAgentDeps(
             request=None,
             update_status_func=lambda request, msg: update_status(
-                session_id, msg
+                session_id,
+                msg,
             ),
         )
 
@@ -78,7 +82,7 @@ async def run_agent_with_progress(session_id, url):
             result_store[session_id] = result
     except Exception as e:
         logger.error(
-            f"An unexpected error occurred. See here: " f"{type(e), e, e.args}"
+            f"An unexpected error occurred. See here: " f"{type(e), e, e.args}",
         )
         await update_status(session_id, f"Unexpected error: {e}")
         raise
