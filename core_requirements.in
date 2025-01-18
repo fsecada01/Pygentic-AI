@@ -12,6 +12,7 @@ httpx[socks]
 httpx-html
 html5lib
 hypercorn; platform_system == 'Windows'
+itsdangerous
 jinjax
 loguru
 lxml

@@ -1,0 +1,17 @@
+<div class="navbar-menu"
+     id="mainNavbar">
+    <div class="navbar-end">
+        {% if request.user.is_authenticated %}
+        {{ content }}
+        <a href="#"
+           class="havar-item">Logout</a>
+        {% else %}
+        <a href="#"
+           class="havbar-item">Log In</a>
+        <a href="#"
+           class="havbar-item">Create Account</a>
+        <a href=""
+           class="havbar-item"></a>
+        {% endif %}
+    </div>
+</div>

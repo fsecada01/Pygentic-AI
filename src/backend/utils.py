@@ -57,7 +57,7 @@ def get_val(val: str, default: str | int | bool | None = None, **kwargs):
         val = os.environ.get(val)
     elif config(val, None, **kwargs) is not None:
         val = config(val)
-    elif default:
+    elif default is not None:
         val = default
     else:
         raise ValueError(

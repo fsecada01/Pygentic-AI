@@ -121,7 +121,7 @@ if app_settings.DEBUG in (True, "True"):
 
     app.add_middleware(
         DebugToolbarMiddleware,
-        panels=["app.SQLModelPanel"],
+        panels=["app.SQLAModelPanel"],
         disable_panels=["debug_toolbar.panels.profiling.ProfilingPanel"],
     )
 

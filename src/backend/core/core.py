@@ -24,7 +24,7 @@ class SwotAgentDeps(Base):
 
     request: Any | None = None
     update_status_func: Callable | None = None
-    tool_history: list[str]
+    tool_history: list[str] | None = None
 
 
 swot_agent = Agent(

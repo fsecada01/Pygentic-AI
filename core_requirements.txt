@@ -10,7 +10,7 @@ annotated-types==0.7.0
     # via
     #   pydantic
     #   sqlmodel-crud-utilities
-anthropic==0.43.0
+anthropic==0.43.1
     # via pydantic-ai-slim
 anyio==4.8.0
     # via
@@ -154,6 +154,8 @@ importlib-metadata==8.5.0
     # via
     #   opentelemetry-api
     #   pyppeteer
+itsdangerous==2.2.0
+    # via -r core_requirements.in
 jinja2==3.1.5
     # via jinjax
 jinjax==0.48
@@ -193,7 +195,7 @@ mistralai==1.3.1
     # via pydantic-ai-slim
 mypy-extensions==1.0.0
     # via typing-inspect
-openai==1.59.7
+openai==1.59.8
     # via pydantic-ai-slim
 opentelemetry-api==1.29.0
     # via

@@ -26,7 +26,7 @@ catalog = Catalog(jinja_env=templates.env)
 list(
     map(
         lambda folder: catalog.add_folder(
-            os.path.join(frontend, "components", folder),  # noqa
+            os.path.join(frontend, "templates", "components", folder),  # noqa
         ),
         ("main", "forms", "snippets"),
     ),
