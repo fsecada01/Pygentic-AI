@@ -1,0 +1,33 @@
+<section class="section">
+    <div class="container"
+         id="result-container">
+        <h2 class="subtitle is-2">Analysis Complete</h2>
+        <div class="fixed-grid">
+            <div class="grid">
+                {% for cat in results %}
+                <div class="cell">
+                    <div class="content">
+                        <ul>
+                            {% for result in cat %}
+                            <ResultEntry result=result>
+                                {% if cat == 'strengths' %}
+                                <i class="fas fa-solid fa-arrow-up"></i>
+                                {% elif cat == 'weaknesses' %}
+                                <i class="fas fa-solid fa-arrow-down"></i>
+                                {% elif cat == 'opportunities' %}
+                                <i class="fas fa-regular fa-lightbulb"></i>
+                                {% else %}
+                                <i
+                                   class="fas fa-solid fa-triangle-exclamation"></i>
+                                {% endif %}
+                            </ResultEntry>
+
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

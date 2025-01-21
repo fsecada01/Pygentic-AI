@@ -2,7 +2,8 @@
 form_id: str,
 action: str,
 target: str,
-method: str = 'GET'
+method: str = 'GET',
+trigger: str = 'submit'
 #}
 <div class="container">
     <form id="{{ form_id }}"
@@ -15,14 +16,8 @@ method: str = 'GET'
           {% elif method.lower() == 'delete' %}
           hx-delete={{ action }}
           {% endif %}
+          hx-trigger={{ trigger }}
           hx-target="#{{ target }}">
         {{ content }}
-        <div class="field">
-            <div class="control">
-                <input type="submit"
-                       class="button is-success"
-                       value="submit">
-            </div>
-        </div>
     </form>
 </div>

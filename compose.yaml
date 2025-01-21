@@ -18,7 +18,7 @@ services:
       - traefik.enable=true
       - traefik.docker.network=proxy
       - traefik.http.routers.pygentic_ai.entrypoints=websecure
-      - traefik.http.routers.pygentic_ai.rule=Host(`rankedjobsmicroservice.francissecada.com`)
+      - traefik.http.routers.pygentic_ai.rule=Host(`pygenticai.francissecada.com`)
       - traefik.http.routers.pygentic_ai.tls=true
     healthcheck:
       test: curl --fail http://localhost:5051/ || exit 1
@@ -48,7 +48,7 @@ services:
       - traefik.enable=true
       - traefik.docker.network=proxy
       - traefik.http.routers.celery_ranked_jobs.entrypoints=websecure
-      - traefik.http.routers.celery_ranked_jobs.rule=Host(`celery.rankedjobsmicroservice.francissecada.com`)
+      - traefik.http.routers.celery_ranked_jobs.rule=Host(`celery.pygenticai.francissecada.com`)
     networks:
       - proxy
     depends_on:

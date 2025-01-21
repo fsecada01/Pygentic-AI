@@ -1,0 +1,22 @@
+{% if messages %}
+<div id="status-container"
+     class="container">
+    {% for message in messages %}
+    {% set is_error = message.startswith('Error:') %}
+    {% set is_loading = loop.last and not result %}
+    {% set is_tool_message = message.startswith('Using tool') %}
+    <div class="box">
+        {% set bg_color = 'danger' if is_error else ('dark' if is_loading else "info"
+        %}
+        {% if is_error %}
+        {% set content = message.split('body:', 1)[1] %}
+        {% elif is_tool_message %}
+        {% set content = message.split('', 2)[2].split('...', 1)[1] %}
+        {% else %}
+        {% set content = message %}
+        {% endif %}
+        <StatusResult :div_class=bg_color>{{ message }}</StatusResult>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
