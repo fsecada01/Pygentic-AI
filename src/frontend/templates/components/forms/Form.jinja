@@ -8,15 +8,15 @@ trigger: str = 'submit'
 <div class="container">
     <form id="{{ form_id }}"
           {% if method.lower() == 'get' %}
-          hx-get={{ action }}
+          hx-get="{{ action }}"
           {% elif method.lower() == 'post' %}
-          hx-post={{ action }}
+          hx-post="{{ action }}"
           {% elif method.lower() == 'put' %}
-          hx-put={{ action }}
+          hx-put="{{ action }}"
           {% elif method.lower() == 'delete' %}
-          hx-delete={{ action }}
+          hx-delete="{{ action }}"
           {% endif %}
-          hx-trigger={{ trigger }}
+          hx-trigger="{{ trigger }}"
           hx-target="#{{ target }}">
         {{ content }}
     </form>

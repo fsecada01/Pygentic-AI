@@ -6,8 +6,7 @@
     {% set is_loading = loop.last and not result %}
     {% set is_tool_message = message.startswith('Using tool') %}
     <div class="box">
-        {% set bg_color = 'danger' if is_error else ('dark' if is_loading else "info"
-        %}
+        {% set bg_color = 'danger' if is_error else ('dark' if is_loading else "info") %}
         {% if is_error %}
         {% set content = message.split('body:', 1)[1] %}
         {% elif is_tool_message %}
@@ -15,7 +14,7 @@
         {% else %}
         {% set content = message %}
         {% endif %}
-        <StatusResult :div_class=bg_color>{{ message }}</StatusResult>
+        <StatusResult div_class={{ bg_color }}>{{ message }}</StatusResult>
     </div>
     {% endfor %}
 </div>

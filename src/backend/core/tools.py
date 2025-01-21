@@ -59,11 +59,13 @@ async def analyze_competition(
         logger.info("Error: OpenAI client not initialized.")
         return ""
     try:
-        response = await ctx.deps.client.aio.models.generate_content(
+        response = ctx.deps.client.chat.completions.create(
             model=AI_MODEL,
-            contents=prompt,
+            messages=[
+                {"role": "system", "content": prompt},
+            ],
         )
-        return response.text
+        return response.choices[0].message.content
     except Exception as e:
         logger.error(f"Error analyzing competition: {e}")
         return f"Error analyzing competition: {e}"
@@ -84,7 +86,7 @@ async def get_reddit_insights(
     :param subreddit_name: str
     :return: str
     """
-    subreddit = ctx.deps.reddit.subreddit(subreddit_name)
+    subreddit = ctx.deps.reddit_client.subreddit(subreddit_name)
     search_results = subreddit.search(query)
 
     insights = []
