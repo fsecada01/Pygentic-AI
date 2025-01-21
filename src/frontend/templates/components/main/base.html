@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "components/main/header.html" %}
+    {% block css_content %}
+    {% endblock css_content %}
+</head>
+
+<body>
+    {% include "components/main/nav.html" %}
+    {% block content%}
+    {% endblock %}
+    {% block js_content %}
+    {% endblock js_content %}
+    {% include "components/snippets/js.html" %}
+</body>
+
+</html>

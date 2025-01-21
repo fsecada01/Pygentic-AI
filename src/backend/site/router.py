@@ -2,10 +2,10 @@ import asyncio
 import os
 
 from fastapi import APIRouter, Form, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from jinjax import Catalog, JinjaX
 from starlette.responses import HTMLResponse
-from starlette.staticfiles import StaticFiles
-from starlette.templating import Jinja2Templates
 
 from backend.logger import logger
 from backend.settings import app_settings
@@ -39,7 +39,7 @@ user_frontend.mount(
 )
 
 
-@user_frontend.post("analyze", response_class=HTMLResponse)
+@user_frontend.post("/analyze", response_class=HTMLResponse)
 async def analyze_url(request: Request, url: str = Form(...)) -> HTMLResponse:
     """
     Analyze a given URL using SWOT analysis agent

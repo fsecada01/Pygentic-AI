@@ -1,0 +1,21 @@
+{# def
+    form_id: str,
+    action: str,
+    target: str,
+    method: str = 'GET'
+#}
+<Form form_id={{ form_id }}
+      action={{ action }}
+      target={{ target }}
+      method={{ method }}>
+    <div class="control">
+        <label for="search"
+               class="label">Search</label>
+        <input type="url"
+               class="input is-rounded"
+               id="search"
+               name="search"
+               placeholder="URL" />
+    </div>
+    {{ content }}
+</Form>

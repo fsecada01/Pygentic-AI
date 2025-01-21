@@ -2,15 +2,33 @@ repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v5.0.0
   hooks:
+    - id: check-added-large-files
+      args: ['--maxkb=5000']
     - id: check-ast
+    - id: check-builtin-literals
+    - id: check-byte-order-marker
+    - id: check-case-conflict
+    - id: check-docstring-first
+    - id: check-executables-have-shebangs
     - id: check-json
     - id: check-merge-conflict
+    # - id: check-shebang-scripts-are-executable
+    - id: check-symlinks
+    - id: check-toml
+    - id: check-vcs-permalinks
+    - id: check-xml
     - id: check-yaml
-    - id: check-builtin-literals
     - id: debug-statements
+      exclude: tests/
     - id: destroyed-symlinks
+    # - id: detect-aws-credentials
+    - id: detect-private-key
     - id: end-of-file-fixer
-    - id: mixed-line-ending
+      exclude: tests/test_changes/
+      files: \.(py|sh|rst|yml|yaml)$
+    - id: pretty-format-json
+      args: [--autofix]
+    - id: sort-simple-yaml
     - id: trailing-whitespace
 - repo: https://github.com/aufdenpunkt/pre-commit-js-beautify
   rev: 1.13.0 # represents the used version of JS Beautify as well

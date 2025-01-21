@@ -61,6 +61,7 @@ async def unicorn_exception_handler(request: Request, exc: UnicornException):
     :param exc: UnicornException
     :return: JSONResponse
     """
+    logger.error(f"{request}: {exc.name}")
     return JSONResponse(
         status_code=418,
         content={
@@ -84,18 +85,20 @@ app.add_middleware(
     https_only=get_val("HTTPS_ONLY", False),
 )
 
-app.include_router(user_frontend)
 
-
-@app.get("/", response_class=HTMLResponse)
+@user_frontend.get("/", response_class=HTMLResponse)
 async def home_page(request: Request) -> HTMLResponse:
     """
     default homepage for the web application
     :param request:
     :return: HTMLResponse
     """
-    return templates.TemplateResponse("home.html", {"request": request})
+    return templates.TemplateResponse(
+        request, "home.html", context={"request": request}
+    )
 
+
+app.include_router(user_frontend)
 
 if app_settings.DEBUG in (True, "True"):
     from debug_toolbar.middleware import DebugToolbarMiddleware
@@ -114,7 +117,7 @@ if app_settings.DEBUG in (True, "True"):
         async def add_engines(self, request: Request):
             """
             Adding SQLModel engine to middleware object.
-            :param request: Request
+            :param request: Request0
             :return:
             """
             self.engines.add(engine.sync_engine)

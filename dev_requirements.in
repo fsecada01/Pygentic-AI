@@ -2,7 +2,7 @@
 
 alembic
 black
-fastapi-debug-toolbar
+fastapi-debug-toolbar @ git+https://github.com/fsecada01/fastapi-debug-toolbar.git@patch-2
 isort
 jupyterlab
 jupyterlab-code-formatter

@@ -3,6 +3,32 @@ import os
 from decouple import config
 
 
+class ContextManager:
+    """
+    Context middleware to inject all variables into the global context
+    object. This will ensure that the `request` object is available to all
+    components in JinjaX and removes the need to pass it through explicitly.
+    """
+
+    def __init__(self):
+        self.global_context = {}
+
+    def set_context(self, **kwargs):
+        """
+        Sets the global context for the application via kwargs
+
+        :param kwargs: dict[str, Any]
+        """
+        self.global_context.update(kwargs)
+
+    def get_context(self):
+        """
+        retrieves the global context for the application
+        :return: dict[str, Any]
+        """
+        return self.global_context
+
+
 def get_db_url(env: str = "dev"):
     """
 

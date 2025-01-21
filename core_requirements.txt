@@ -195,8 +195,10 @@ mistralai==1.3.1
     # via pydantic-ai-slim
 mypy-extensions==1.0.0
     # via typing-inspect
-openai==1.59.8
-    # via pydantic-ai-slim
+openai==1.59.9
+    # via
+    #   -r core_requirements.in
+    #   pydantic-ai-slim
 opentelemetry-api==1.29.0
     # via
     #   opentelemetry-exporter-otlp-proto-http
@@ -254,11 +256,15 @@ packaging==24.2
     # via opentelemetry-instrumentation
 parse==1.20.2
     # via httpx-html
+praw==7.8.1
+    # via -r core_requirements.in
+prawcore==2.4.0
+    # via praw
 priority==2.0.0
     # via hypercorn
 prometheus-client==0.21.1
     # via flower
-prompt-toolkit==3.0.48
+prompt-toolkit==3.0.50
     # via click-repl
 protobuf==5.29.3
     # via
@@ -334,7 +340,9 @@ redis==5.2.1
 requests==2.32.3
     # via
     #   opentelemetry-exporter-otlp-proto-http
+    #   prawcore
     #   pydantic-ai-slim
+    #   update-checker
 rich==13.9.4
     # via
     #   logfire
@@ -410,6 +418,8 @@ tzdata==2024.2
     #   celery
     #   kombu
     #   psycopg
+update-checker==0.18.0
+    # via praw
 urllib3==1.26.20
     # via
     #   pyppeteer
@@ -429,6 +439,8 @@ wcwidth==0.2.13
     # via prompt-toolkit
 webencodings==0.5.1
     # via html5lib
+websocket-client==1.8.0
+    # via praw
 websockets==10.4
     # via pyppeteer
 win32-setctime==1.2.0

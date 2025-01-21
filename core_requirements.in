@@ -17,6 +17,8 @@ jinjax
 loguru
 lxml
 lxml[html_clean]
+openai
+praw
 python-dateutil
 python-decouple
 python-slugify

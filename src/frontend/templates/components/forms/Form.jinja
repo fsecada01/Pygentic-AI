@@ -1,0 +1,28 @@
+{# def
+form_id: str,
+action: str,
+target: str,
+method: str = 'GET'
+#}
+<div class="container">
+    <form id="{{ form_id }}"
+          {% if method.lower() == 'get' %}
+          hx-get={{ action }}
+          {% elif method.lower() == 'post' %}
+          hx-post={{ action }}
+          {% elif method.lower() == 'put' %}
+          hx-put={{ action }}
+          {% elif method.lower() == 'delete' %}
+          hx-delete={{ action }}
+          {% endif %}
+          hx-target="#{{ target }}">
+        {{ content }}
+        <div class="field">
+            <div class="control">
+                <input type="submit"
+                       class="button is-success"
+                       value="submit">
+            </div>
+        </div>
+    </form>
+</div>

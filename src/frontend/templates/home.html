@@ -1,3 +1,20 @@
-<Base>
-<p>foo bar</p>
-</Base>
+{% extends "components/main/base.html" %}
+{% block content %}
+<section class="hero is-large is-info">
+    <div class="hero-body">
+        <p class="title">SWOT ANALYZER</p>
+        <p class="subtitle">Strengths, Weaknesses, Opportunities and Threats
+            breakdown, courtesy of Generative AI-driven insights.</p>
+
+        <p>Try it out now!</p>
+    </div>
+</section>
+<div class="container">
+    <h1 class="title">Search Here</h1>
+    <Search form_id="swotSearch"
+            action="/analyze"
+            target="swotAnalysis"
+            method="post"></Search>
+
+</div>
+{% endblock content %}
