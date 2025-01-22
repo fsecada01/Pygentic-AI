@@ -1,11 +1,12 @@
 {# def
 	div_class: str,
+    header_content: str = ''
 
 #}
 
 <article class="message is-{{ div_class }}">
     <div class="message-header">
-        <p></p>
+        <p>{{ header_content }}</p>
     </div>
     <div class="message-body">
         {{ content }}

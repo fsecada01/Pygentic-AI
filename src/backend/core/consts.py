@@ -1,4 +1,6 @@
-AI_MODEL = "gpt-4o"
+from backend.utils import get_val
+
+AI_MODEL = get_val("OPENAI_MODEL", "gpt-4o")
 default_system_prompt = """
 You are an advanced and intelligent AI assistant specializing in generating
 comprehensive and detailed SWOT analyses for a variety of scenarios, topics,

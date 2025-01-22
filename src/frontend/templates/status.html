@@ -1,21 +1,30 @@
 {% if messages %}
-<div id="status-container"
-     class="container">
-    {% for message in messages %}
-    {% set is_error = message.startswith('Error:') %}
-    {% set is_loading = loop.last and not result %}
-    {% set is_tool_message = message.startswith('Using tool') %}
-    <div class="box">
-        {% set bg_color = 'danger' if is_error else ('dark' if is_loading else "info") %}
-        {% if is_error %}
-        {% set content = message.split('body:', 1)[1] %}
-        {% elif is_tool_message %}
-        {% set content = message.split('', 2)[2].split('...', 1)[1] %}
-        {% else %}
-        {% set content = message %}
-        {% endif %}
-        <StatusResult div_class={{ bg_color }}>{{ message }}</StatusResult>
+<section class="section"
+         id="status-container">
+    <div class="container">
+        {% for message in messages %}
+        {% set is_error = message.startswith('Error:') %}
+        {% set is_loading = loop.last and not result %}
+        {% set is_tool_message = message.startswith('Using tool') %}
+        <div class="box">
+            {% set bg_color = 'danger' if is_error else ('dark' if is_loading else
+                    "info") %}
+            {% if is_error %}
+            {% set header_content, content = message.split('body:', 1) %}
+            {% elif is_tool_message %}
+            {% set header_content, content = message.split(' ', 2)[2].split('...', 1) %}
+            {% elif is_loading %}
+            {% set content = message %}
+            {% set header_content = 'In Progress' %}
+            {% else %}
+            {% set content = message %}
+            {% set header_content = 'Complete' %}
+            {% endif %}
+            <StatusResult div_class={{ bg_color }}
+                          header_content={{ header_content }}>{{ message }}
+            </StatusResult>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
+</section>
 {% endif %}

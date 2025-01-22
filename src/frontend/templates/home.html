@@ -9,6 +9,7 @@
     </div>
 </section>
 <section class="section">
+    <Spinner></Spinner>
     <div class="container">
         <h1 class="title">Search Here</h1>
         <Search form_id="swotSearch"
@@ -17,14 +18,13 @@
                 method="post">
             <div class="field mt-1 pt-1">
                 <div class="control">
-                    <button type="button"
+                    <button type="submit"
                             class="button is-success"
+                            hx-indicator='#spinner'
                             hx-on:click="
                     const [status, result] = ['#status', '#result'].map(id => document.querySelector(id));
                     status.style.display = 'block';
                     result.style.display = 'none';
-
-                    htmx.trigger('#swotSearch', 'submit')
                     ">Analyze</button>
                 </div>
             </div>
@@ -36,14 +36,14 @@
          id="status">
         <div class="box"
              id="status"
-             hx-get='/status'
+             hx-get={{ url_for('get_status') }}
              hx-trigger='load, every 1s'
              hx-swap='innerHTML'
              style="display: none">
         </div>
         <div class="box"
              id="result"
-             hx-get='/result'
+             hx-get={{ url_for('get_result') }}
              hx-trigger="load, every 1s[!this.querySelector('#result-container') || this.style.display === 'none']"
              hx-swap='innerHTML'
              hx-on:after-request="
@@ -57,11 +57,3 @@
     </div>
 </section>
 {% endblock content %}
-{% block js_content %}
-<script>
-    document.body.addEventListener("htmx:configRequest", function(evt) {
-        console.log("HTMX Request Configured:", evt.detail);
-    });
-</script>
-
-{% endblock js_content %}
