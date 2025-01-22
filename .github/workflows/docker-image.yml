@@ -1,0 +1,46 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "*_deploy", "main"]
+  pull_request:
+    branches: [ "*_deploy", "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [ "3.13" ]
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+      - name: Set SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Build the Docker image
+        uses: docker/build-push-action@v6
+        with:
+          ssh: |
+            default=${{ env.SSH_AUTH_SOCK }}
+          build-args: |
+            GIT_BRANCH=${{ steps.extract_branch.outputs.branch }}
+          push: true
+          tags: s3docker.francissecada.com/ranked_jobs:${{ steps.extract_branch.outputs.branch }}.${{ steps.date.outputs.date }}
