@@ -43,4 +43,4 @@ jobs:
           build-args: |
             GIT_BRANCH=${{ steps.extract_branch.outputs.branch }}
           push: true
-          tags: s3docker.francissecada.com/ranked_jobs:${{ steps.extract_branch.outputs.branch }}.${{ steps.date.outputs.date }}
+          tags: s3docker.francissecada.com/pygentic_ai:${{ steps.extract_branch.outputs.branch }}.${{ steps.date.outputs.date }}

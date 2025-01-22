@@ -90,7 +90,7 @@ This project automates Python environment setup and dependency management, ensur
     ├── dev_requirements.txt
     ├── docker
     │   ├── celery
-    │   └── ranked_jobs_ms
+    │   └── pygentic_ai_ms
     ├── Dockerfile
     ├── pyproject.toml
     ├── README.md
@@ -451,12 +451,12 @@ This project automates Python environment setup and dependency management, ensur
 					</table>
 				</blockquote>
 			</details>
-			<!-- ranked_jobs_ms Submodule -->
+			<!-- pygentic_ai_ms Submodule -->
 			<details>
-				<summary><b>ranked_jobs_ms</b></summary>
+				<summary><b>pygentic_ai_ms</b></summary>
 				<blockquote>
 					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ docker.ranked_jobs_ms</b></code>
+						<code><b>⦿ docker.pygentic_ai_ms</b></code>
 					<table style='width: 100%; border-collapse: collapse;'>
 					<thead>
 						<tr style='background-color: #f8f9fa;'>
@@ -465,15 +465,15 @@ This project automates Python environment setup and dependency management, ensur
 						</tr>
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\ranked_jobs_ms\build.sh'>build.sh</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai_ms\build.sh'>build.sh</a></b></td>
 							<td style='padding: 8px;'>- Install necessary dependencies for the ranked jobs microservice in the Docker container<br>- The script sets up essential tools like Python, PostgreSQL, and Git, ensuring a robust environment for the microservice to run smoothly.</td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\ranked_jobs_ms\python_build.sh'>python_build.sh</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai_ms\python_build.sh'>python_build.sh</a></b></td>
 							<td style='padding: 8px;'>- Automates Python environment setup and dependency management for the ranked jobs microservice in the Docker architecture<br>- Sets up virtual environment, compiles requirements, and syncs dependencies for smooth execution.</td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\ranked_jobs_ms\python_start.sh'>python_start.sh</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai_ms\python_start.sh'>python_start.sh</a></b></td>
 							<td style='padding: 8px;'>- Launches the Python application using Gunicorn with specified configurations like the number of workers, timeout, and port<br>- The script activates the virtual environment and starts the server to handle incoming requests.</td>
 						</tr>
 					</table>
