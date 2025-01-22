@@ -119,7 +119,7 @@ async def run_agent(
             f"Perform a comprehensive SWOT analysis for this product: {url}",
             deps=deps,
         )
-        logger.info(f"Agent Result: {pformat(result.data)}")
+        logger.info(f"Agent Result: {pformat(result.data.model_dump())}")
 
         if deps.update_status_func:
             await deps.update_status_func(deps.request, "Analysis Complete")

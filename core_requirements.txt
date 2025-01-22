@@ -10,7 +10,7 @@ annotated-types==0.7.0
     # via
     #   pydantic
     #   sqlmodel-crud-utilities
-anthropic==0.43.1
+anthropic==0.44.0
     # via pydantic-ai-slim
 anyio==4.8.0
     # via
@@ -31,7 +31,7 @@ beautifulsoup4==4.12.3
     # via httpx-html
 billiard==4.2.1
     # via celery
-cachetools==5.5.0
+cachetools==5.5.1
     # via google-auth
 celery==5.4.0
     # via
@@ -195,7 +195,7 @@ mistralai==1.4.0
     # via pydantic-ai-slim
 mypy-extensions==1.0.0
     # via typing-inspect
-openai==1.59.9
+openai==1.60.0
     # via
     #   -r core_requirements.in
     #   pydantic-ai-slim
@@ -413,7 +413,7 @@ typing-inspect==0.9.0
     # via
     #   -r core_requirements.in
     #   mistralai
-tzdata==2024.2
+tzdata==2025.1
     # via
     #   celery
     #   kombu

@@ -13,6 +13,7 @@ from backend.site.consts import (
     ANALYSIS_COMPLETE_MESSAGE,
     ANALYZING_MESSAGE,
     result_store,
+    running_tasks,
     status_store,
 )
 from backend.site.utils import run_agent_with_progress
@@ -47,13 +48,13 @@ async def analyze_url(request: Request, url: str = Form(...)) -> HTMLResponse:
     :param url:
     :return:
     """
-    running_tasks = set()
     session_id = str(id(request))
     request.session["analysis_id"] = session_id
     request.session["start_time"] = asyncio.get_event_loop().time()
 
     # Clearing out the status store for the analysis ID session
     status_store[session_id] = []
+    result_store[session_id] = None
 
     status_store[session_id].append(ANALYZING_MESSAGE)
 
@@ -83,14 +84,17 @@ async def get_status(request: Request):
     context = {"request": request, "messages": [], "result": False}
     session_id = request.session.get("analysis_id")
     if session_id:
+        logger.info(f"Found session id!  {session_id}")
         messages = status_store.get(session_id, [])
         result = ANALYSIS_COMPLETE_MESSAGE in messages
         logger.info(
-            f"Status check - Session ID: {'session_id'}, Messages: "
+            f"Status check - Session ID: {session_id}, Messages: "
             f"{messages}",
         )
 
         context.update({"messages": messages, "result": result})
+
+        logger.info(context)
 
     return templates.TemplateResponse("status.html", context=context)
 

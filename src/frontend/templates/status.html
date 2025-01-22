@@ -7,18 +7,20 @@
         {% set is_loading = loop.last and not result %}
         {% set is_tool_message = message.startswith('Using tool') %}
         <div class="box">
-            {% set bg_color = 'danger' if is_error else ('dark' if is_loading else
-                    "info") %}
             {% if is_error %}
+            {% set bg_color = 'danger' %}
             {% set header_content, content = message.split('body:', 1) %}
-            {% elif is_tool_message %}
-            {% set header_content, content = message.split(' ', 2)[2].split('...', 1) %}
             {% elif is_loading %}
-            {% set content = message %}
-            {% set header_content = 'In Progress' %}
-            {% else %}
+            {% set bg_color = 'success' %}
             {% set content = message %}
             {% set header_content = 'Complete' %}
+            {% elif is_tool_message %}
+            {% set bg_color = 'dark'%}
+            {% set header_content, content = message.split(' ', 2)[2].split('...', 1) %}
+            {% else %}
+            {% set bg_color = 'info' %}
+            {% set content = message %}
+            {% set header_content = 'In Progress' %}
             {% endif %}
             <StatusResult div_class={{ bg_color }}
                           header_content={{ header_content }}>{{ message }}

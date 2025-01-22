@@ -1,6 +1,6 @@
 {% extends "components/main/base.html" %}
 {% block content %}
-<section class="hero is-large is-info">
+<section class="hero is-medium is-info">
     <div class="hero-body">
         <p class="title">SWOT ANALYZER</p>
         <p class="subtitle">Strengths, Weaknesses, Opportunities and Threats
@@ -31,29 +31,28 @@
         </Search>
     </div>
 </section>
-<section class="section">
-    <div class="container"
-         id="status">
-        <div class="box"
-             id="status"
-             hx-get={{ url_for('get_status') }}
-             hx-trigger='load, every 1s'
-             hx-swap='innerHTML'
-             style="display: none">
-        </div>
-        <div class="box"
-             id="result"
-             hx-get={{ url_for('get_result') }}
-             hx-trigger="load, every 1s[!this.querySelector('#result-container') || this.style.display === 'none']"
-             hx-swap='innerHTML'
-             hx-on:after-request="
-                if(this.innerHTML.trim().length > 0) {
-                const statusDiv = document.querySelector(#status);
-                if (statusDiv) statusDiv.style.display = 'none';
-                this.style.display = 'block'
-                }
-                ">
-        </div>
+<section class="section"
+         id="analysis-content">
+    <div class="box"
+         id="status"
+         hx-get={{ url_for('get_status') }}
+         hx-trigger="load, every 1s"
+         hx-swap="innerHTML"
+         style="display: none">
+    </div>
+    <div class="box"
+         id="result"
+         hx-get={{ url_for('get_result') }}
+         hx-trigger="load, every 1s[!this.querySelector('#result-container') || this.style.display === 'none']"
+         hx-swap="innerHTML"
+         hx-on:after-request="
+            if(this.innerHTML.trim().length > 0) {
+                console.log('Going to turn off the status element and load the result element.')
+            const statusDiv = document.querySelector('#status');
+            if (statusDiv) statusDiv.style.display = 'none';
+            this.style.display = 'block'
+            }
+            ">
     </div>
 </section>
 {% endblock content %}

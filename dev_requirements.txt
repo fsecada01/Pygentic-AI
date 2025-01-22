@@ -84,7 +84,7 @@ fastapi-debug-toolbar @ git+https://github.com/fsecada01/fastapi-debug-toolbar.g
     # via -r dev_requirements.in
 fastjsonschema==2.21.1
     # via nbformat
-filelock==3.16.1
+filelock==3.17.0
     # via virtualenv
 fqdn==1.5.1
     # via jsonschema
