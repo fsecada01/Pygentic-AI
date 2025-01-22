@@ -84,17 +84,17 @@ async def get_status(request: Request):
     context = {"request": request, "messages": [], "result": False}
     session_id = request.session.get("analysis_id")
     if session_id:
-        logger.info(f"Found session id!  {session_id}")
+        # logger.info(f"Found session id!  {session_id}")
         messages = status_store.get(session_id, [])
         result = ANALYSIS_COMPLETE_MESSAGE in messages
-        logger.info(
-            f"Status check - Session ID: {session_id}, Messages: "
-            f"{messages}",
-        )
+        # logger.info(
+        #     f"Status check - Session ID: {session_id}, Messages: "
+        #     f"{messages}",
+        # )
 
         context.update({"messages": messages, "result": result})
 
-        logger.info(context)
+        # logger.info(context)
 
     return templates.TemplateResponse("status.html", context=context)
 

@@ -1,22 +1,21 @@
 {# def
-    form_id: str,
-    action: str,
-    target: str,
-    method: str = 'GET'
+    input_name: str = 'url',
+    label: bool = False,
+    label_name: str = 'Search',
+    input_type: str = 'text',
+    class_name: str = 'input is-rounded',
+    placeholder: str = 'URL'
 #}
-<Form form_id={{ form_id }}
-      action={{ action }}
-      target={{ target }}
-      method={{ method }}>
-    <div class="control">
-        <label for="url"
-               class="label">Search</label>
-        <input type="url"
-               class="input is-rounded"
-               id="url"
-               name="url"
-               placeholder="URL"
-               required />
-    </div>
-    {{ content }}
-</Form>
+<div class="control is-expanded">
+    {% if label %}
+    <label for={{ input_name }}
+           class="label">{{ label_name }}</label>
+    {% endif %}
+    <input type={{ input_type }}
+           class={{ class_name }}
+           id={{ input_name }}
+           name={{ input_name }}
+           placeholder={{ placeholder }}
+           required />
+</div>
+{{ content }}

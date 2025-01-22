@@ -5,19 +5,17 @@ target: str,
 method: str = 'GET',
 trigger: str = 'submit'
 #}
-<div class="container">
-    <form id="{{ form_id }}"
-          {% if method.lower() == 'get' %}
-          hx-get="{{ action }}"
-          {% elif method.lower() == 'post' %}
-          hx-post="{{ action }}"
-          {% elif method.lower() == 'put' %}
-          hx-put="{{ action }}"
-          {% elif method.lower() == 'delete' %}
-          hx-delete="{{ action }}"
-          {% endif %}
-          hx-trigger="{{ trigger }}"
-          hx-target="#{{ target }}">
-        {{ content }}
-    </form>
-</div>
+<form id="{{ form_id }}"
+      {% if method.lower()=='get' %}
+      hx-get="{{ action }}"
+      {% elif method.lower()=='post' %}
+      hx-post="{{ action }}"
+      {% elif method.lower()=='put' %}
+      hx-put="{{ action }}"
+      {% elif method.lower()=='delete' %}
+      hx-delete="{{ action }}"
+      {% endif %}
+      hx-trigger="{{ trigger }}"
+      hx-target="#{{ target }}">
+    {{ content }}
+</form>

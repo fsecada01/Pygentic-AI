@@ -1,6 +1,7 @@
 import asyncio
 import random
 import time
+from pprint import pformat
 from typing import Any
 
 from loguru import logger
@@ -30,10 +31,14 @@ async def update_status(session_id: str, message: Any) -> None:
     :param message: Any
     :return: None
     """
-    logger.info(f"Updating status for session {session_id}: {message}")
+    logger.debug(f"Updating status for session {session_id}: {message}")
 
     # Handle SWOT analysis result
     if isinstance(message, SwotAnalysis):
+        logger.info(f"SWOT analysis result for session {session_id}: {message}")
+        logger.info(
+            f"adding to the result store. Existing values: {result_store}"
+        )
         result_store[session_id] = message.model_dump()
         status_store[session_id].append(ANALYSIS_COMPLETE_MESSAGE)
         return
@@ -79,6 +84,7 @@ async def run_agent_with_progress(session_id, url):
 
         if not isinstance(result, Exception):
             logger.info(f"Successfully analyzed URL: {url}")
+            logger.debug(pformat(f"Result object: {result}"))
             result_store[session_id] = result
     except Exception as e:
         logger.error(

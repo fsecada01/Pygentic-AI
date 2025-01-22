@@ -1,5 +1,3 @@
-from pprint import pformat
-
 import httpx
 from bs4 import BeautifulSoup as soup
 from pydantic_ai import RunContext
@@ -119,10 +117,12 @@ async def run_agent(
             f"Perform a comprehensive SWOT analysis for this product: {url}",
             deps=deps,
         )
-        logger.info(f"Agent Result: {pformat(result.data.model_dump())}")
+        # logger.debug(f"Agent Result: {pformat(result.data.model_dump())}")
 
         if deps.update_status_func:
             await deps.update_status_func(deps.request, "Analysis Complete")
+
+        return result.data
     except Exception as e:
         logger.exception(f"Error during agent run: {type(e), e, e.args}")
 

@@ -12,23 +12,25 @@
     <Spinner></Spinner>
     <div class="container">
         <h1 class="title">Search Here</h1>
-        <Search form_id="swotSearch"
-                action={{ url_for('analyze_url') }}
-                target="status"
-                method="post">
-            <div class="field mt-1 pt-1">
-                <div class="control">
-                    <button type="submit"
-                            class="button is-success"
-                            hx-indicator='#spinner'
-                            hx-on:click="
-                    const [status, result] = ['#status', '#result'].map(id => document.querySelector(id));
-                    status.style.display = 'block';
-                    result.style.display = 'none';
-                    ">Analyze</button>
-                </div>
-            </div>
-        </Search>
+        <Form form_id="swotSearch"
+              action={{ url_for('analyze_url') }}
+              target="status"
+              method="post">
+            <div class="field has-addons">
+                <Search input_type='url'>
+                    <div class="control">
+                        <button type="submit"
+                                class="button is-success"
+                                hx-indicator='#spinner'
+                                hx-on:click="
+                        const [status, result] = ['#status', '#result'].map(id => document.querySelector(id));
+                        status.style.display = 'block';
+                        result.style.display = 'none';
+                        ">Analyze</button>
+                    </div>
+                </Search>
+        </Form>
+    </div>
     </div>
 </section>
 <section class="section"
@@ -47,7 +49,7 @@
          hx-swap="innerHTML"
          hx-on:after-request="
             if(this.innerHTML.trim().length > 0) {
-                console.log('Going to turn off the status element and load the result element.')
+            console.log('Going to turn off the status element and load the result element.')
             const statusDiv = document.querySelector('#status');
             if (statusDiv) statusDiv.style.display = 'none';
             this.style.display = 'block'
