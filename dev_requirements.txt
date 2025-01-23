@@ -273,7 +273,7 @@ pygments==2.19.1
     #   -c core_requirements.txt
     #   ipython
     #   nbconvert
-pyinstrument==5.0.0
+pyinstrument==5.0.1
     # via fastapi-debug-toolbar
 python-dateutil==2.9.0.post0
     # via
