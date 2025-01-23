@@ -6,6 +6,7 @@ from backend.core.consts import AI_MODEL
 from backend.core.core import SwotAgentDeps, SwotAnalysis, swot_agent
 from backend.core.utils import report_tool_usage
 from backend.logger import logger
+from backend.utils import get_val
 
 
 @swot_agent.tool(prepare=report_tool_usage)
@@ -75,7 +76,7 @@ async def analyze_competition(
 async def get_reddit_insights(
     ctx: RunContext[SwotAgentDeps],
     query: str,
-    subreddit_name: str = "python",
+    subreddit_name: str | None = None,
 ):
     """
     A tool to gain insights from a subreddit. Data is returned as string
@@ -86,6 +87,8 @@ async def get_reddit_insights(
     :param subreddit_name: str
     :return: str
     """
+    if not subreddit_name:
+        subreddit_name = get_val("REDDIT_SUBREDDIT", "python")
     subreddit = ctx.deps.reddit_client.subreddit(subreddit_name)
     search_results = subreddit.search(query)
 

@@ -72,11 +72,11 @@ defusedxml==0.7.1
     # via nbconvert
 distlib==0.3.9
     # via virtualenv
-executing==2.1.0
+executing==2.2.0
     # via
     #   -c core_requirements.txt
     #   stack-data
-fastapi==0.115.6
+fastapi==0.115.7
     # via
     #   -c core_requirements.txt
     #   fastapi-debug-toolbar
@@ -265,7 +265,9 @@ pydantic-core==2.27.2
 pydantic-extra-types==2.10.2
     # via fastapi-debug-toolbar
 pydantic-settings==2.7.1
-    # via fastapi-debug-toolbar
+    # via
+    #   -c core_requirements.txt
+    #   fastapi-debug-toolbar
 pygments==2.19.1
     # via
     #   -c core_requirements.txt
@@ -349,7 +351,7 @@ sqlparse==0.5.3
     # via fastapi-debug-toolbar
 stack-data==0.6.3
     # via ipython
-starlette==0.41.3
+starlette==0.45.2
     # via
     #   -c core_requirements.txt
     #   fastapi
