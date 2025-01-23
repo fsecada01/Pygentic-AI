@@ -47,8 +47,8 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proxy
-      - traefik.http.routers.celery_ranked_jobs.entrypoints=websecure
-      - traefik.http.routers.celery_ranked_jobs.rule=Host(`celery.pygenticai.francissecada.com`)
+      - traefik.http.routers.celery_pygentic_ai.entrypoints=websecure
+      - traefik.http.routers.celery_pygentic_ai.rule=Host(`celery.pygenticai.francissecada.com`)
     networks:
       - proxy
     depends_on:
